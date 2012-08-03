@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= options.app_name %></title>
+  <%%= stylesheet_link_tag    'admin' %>
+  <%%= javascript_include_tag 'admin' %>
+  <%%= csrf_meta_tags %>
+</head>
+<body>
+  <div id="container">
+    <div id="header">
+      <h1><%%= link_to "<%= options.app_name %>", admin_dashboard_path %></h1>
+      <div id="user-navigation">
+        <ul class="wat-cf">
+          <li><%%= link_to "Main site", root_path, :target => "_blank" %></li>
+          <li><%%#= link_to "Logout", admin_logout_path, :class => "logout" %></li>
+        </ul>
+      </div>
+      <div id="main-navigation">
+        <ul class="wat-cf">
+        </ul>
+      </div>
+    </div>
+    <div id="wrapper" class="wat-cf">
+      <div class="flash">
+        <%% flash.each do |type, message| -%>
+          <div class="message <%%= type %>">
+            <p><%%= message %></p>
+          </div>
+        <%% end -%>
+      </div>
+      <div id="main">
+        <%%= yield %>
+        <div id="footer">
+          <div class="block">
+            <p>Copyright &copy; <%%= Time.now.year %> <%= options.app_name %></p>
+          </div>
+        </div>
+      </div>
+      <div id="sidebar">
+        <%%= render :partial => 'admin/shared/sidebar' %>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

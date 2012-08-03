@@ -6,9 +6,7 @@ class TestAdminThemeResourceGeneration < Spinach::FeatureSteps
   end
 
   And 'I install \'admin-theme\' gem' do
-    in_app_dir { `echo "gem 'admin-theme', path: '/home/narkoz/Development/admin-theme'" >> Gemfile && bundle` }
-      # `echo "'admin-theme'" >> Gemfile && bundle`
-      # `echo "'admin-theme', github: 'simmetria/admin-theme'" >> Gemfile && bundle`
+    in_app_dir { `echo "'admin-theme', github: 'simmetria/admin-theme'" >> Gemfile && bundle` }
   end
 
   And 'I run \'rails generate admin_theme:setup\'' do

@@ -8,7 +8,8 @@ module AdminTheme
     argument :resource,   :type => :string
     argument :model_name, :type => :string, :required => false
 
-    class_option :pagination, :type => :boolean, :default => false, :desc => 'Specify if you use kaminari to paginate'
+    class_option :engine,     :type => :string,   :default => 'erb', :desc => 'Specify the template engine'
+    class_option :pagination, :type => :boolean,  :default => false, :desc => 'Specify if you use kaminari to paginate'
 
     def initialize(args, *options)
       super(args, *options)
@@ -21,11 +22,11 @@ module AdminTheme
     end
 
     def generate_views
-      template "view_form.html.erb",   "app/views/admin/#{plural_resource_name}/_form.html.erb"
-      template "view_edit.html.erb",   "app/views/admin/#{plural_resource_name}/edit.html.erb"
-      template "view_index.html.erb",  "app/views/admin/#{plural_resource_name}/index.html.erb"
-      template "view_new.html.erb",    "app/views/admin/#{plural_resource_name}/new.html.erb"
-      template "view_show.html.erb",   "app/views/admin/#{plural_resource_name}/show.html.erb"
+      template "#{options.engine}/view_form.html.#{options.engine}",   "app/views/admin/#{plural_resource_name}/_form.html.#{options.engine}"
+      template "#{options.engine}/view_edit.html.#{options.engine}",   "app/views/admin/#{plural_resource_name}/edit.html.#{options.engine}"
+      template "#{options.engine}/view_index.html.#{options.engine}",  "app/views/admin/#{plural_resource_name}/index.html.#{options.engine}"
+      template "#{options.engine}/view_new.html.#{options.engine}",    "app/views/admin/#{plural_resource_name}/new.html.#{options.engine}"
+      template "#{options.engine}/view_show.html.#{options.engine}",   "app/views/admin/#{plural_resource_name}/show.html.#{options.engine}"
 
       # Add link to resource in admin layout
       gsub_file("app/views/layouts/admin.html.erb", /\<div\s+id=\"main-navigation\">.*\<\/ul\>/mi) do |match|

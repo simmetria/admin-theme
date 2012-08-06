@@ -1,0 +1,31 @@
+.block
+  .secondary-navigation
+    ul.wat-cf
+      li.first.active = link_to t('admin-theme.list'), <%= controller_routing_path %>_path
+      li = link_to t('admin-theme.new'), new_<%= singular_controller_routing_path %>_path
+
+  .content
+    h2.title #{t('admin-theme.all')} <%= plural_model_name %>
+    .inner
+      table.table
+        tr
+          th.first ID
+          th = t('admin-theme.created_at')
+          th = t('admin-theme.updated_at')
+          th.last &nbsp;
+        - @<%= plural_resource_name %>.each do |<%= resource_name %>|
+          tr class=cycle('odd', 'even')
+            td = <%= resource_name %>.id
+            td = l <%= resource_name %>.created_at, :format => :'admin-theme'
+            td = l <%= resource_name %>.updated_at, :format => :'admin-theme'
+            td.last
+              = link_to t('admin-theme.show'), <%= singular_controller_routing_path %>_path(<%= resource_name %>)
+              '&nbsp;|
+              = link_to t('admin-theme.edit'), edit_<%= singular_controller_routing_path %>_path(<%= resource_name %>)
+              '&nbsp;|
+              = link_to t('admin-theme.delete'), <%= singular_controller_routing_path %>_path(<%= resource_name %>), :method => :delete, :data => { :confirm => t('admin-theme.confirm') }
+
+      .actions-bar.wat-cf
+        .actions
+<% if options.pagination %>
+        = paginate(@<%= plural_resource_name %>, :theme => 'admin_theme')<% end %>

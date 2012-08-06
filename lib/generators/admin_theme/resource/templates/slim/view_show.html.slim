@@ -1,0 +1,29 @@
+.block
+  .secondary-navigation
+    ul.wat-cf
+      li.first = link_to t('admin-theme.list'), <%= controller_routing_path %>_path
+      li = link_to t('admin-theme.new'), new_<%= singular_controller_routing_path %>_path
+      li.active = link_to t('admin-theme.show'), <%= singular_controller_routing_path %>_path
+
+  .content
+    h2.title <%= model_name %> ##{@<%= resource_name %>.id}
+    .inner
+      p
+        b
+          ' #{t('admin-theme.created_at')}:
+        = l @<%= resource_name %>.created_at, :format => :'admin-theme'
+
+      p
+        b
+          ' #{t('admin-theme.updated_at')}:
+        = l @<%= resource_name %>.updated_at, :format => :'admin-theme'
+
+      .wat-cf
+        = link_to edit_<%= singular_controller_routing_path %>_path(@<%= resource_name %>), :class => 'button' do
+          = image_tag('web-app-theme/icons/application_edit.png', :alt => t('admin-theme.edit'))
+          = t('admin-theme.edit')
+
+        = link_to <%= singular_controller_routing_path %>_path(@<%= resource_name %>), :method => 'delete', :class => 'button',
+              :data => { :confirm => t('admin-theme.confirm') } do
+          = image_tag('web-app-theme/icons/cross.png', :alt => t('admin-theme.delete'))
+          = t('admin-theme.delete')

@@ -1,0 +1,11 @@
+.block
+  .secondary-navigation
+    ul.wat-cf
+      li.first = link_to t('admin-theme.list'), <%= controller_routing_path %>_path
+      li.active = link_to t('admin-theme.new'), new_<%= singular_controller_routing_path %>_path
+
+  .content
+    h2.title #{t('admin-theme.new')} <%= model_name %>
+    .inner
+      = form_for :<%= resource_name %>, :url => <%= controller_routing_path %>_path, :html => { :class => :form } do |f|
+        = render :partial => 'form', :locals => {:f => f}

@@ -7,9 +7,8 @@
     </ul>
   </div>
   <div class="content">
-    <h2 class="title"><%= resource_name.capitalize %> #<%%= @<%= resource_name %>.id %></h2>
+    <h2 class="title"><%= model_name %> #<%%= @<%= resource_name %>.id %></h2>
     <div class="inner">
-
       <p>
         <b><%%= t("admin-theme.created_at") %>:</b>
         <%%= l @<%= resource_name %>.created_at, :format => :'admin-theme' %>

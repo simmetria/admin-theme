@@ -11,6 +11,7 @@ Changes from main branch:
 * Improved I18n support
 * Only default theme included
 * Kaminari for pagination (optional)
+* Erb and slim template engines support
 
 ## Installation
 
@@ -37,7 +38,7 @@ Run `bundle install`
   rails generate admin_theme:setup
   ```
 
-  This will generate some controllers, views for admin panel and prepare assets:
+  This will generate some assets, controllers, views for admin panel and prepare routes:
 
   ```sh
   create  app/views/layouts/admin.html.erb
@@ -77,7 +78,13 @@ Run `bundle install`
   rails generate admin_theme:resource posts --pagination
   ```
 
-  If you want to generate resource with different name you can explicitly specify the model name in the second parameter:
+  You can pass `engine` option to specify the template engine (`slim` or `erb`, the default is `erb`):
+
+  ```sh
+  rails generate admin_theme:setup --engine=slim
+  ```
+
+  If you want to generate resource with different name just specify the model name in the second parameter:
 
   ```sh
   rails generate admin_theme:resource items post # assuming you have a model named Post
@@ -103,6 +110,7 @@ admin-theme:
   delete: Delete
   confirm: Are you sure?
   created_at: Created at
+  updated_at: Updated at
   all: All
   or: or
 ```

@@ -1,0 +1,12 @@
+.group
+  /= f.label :example, 'Example', :class => :label
+  /= f.text_field :example, :class => 'text_field'
+  span.description Ex: a simple text
+
+.group.navform.wat-cf
+  button.button type='submit'
+    = image_tag('web-app-theme/icons/tick.png', :alt => t('admin-theme.save'))
+    = t('admin-theme.save')
+
+  span.text_button_padding = t('admin-theme.or')
+  = link_to t('admin-theme.cancel'), <%= controller_routing_path %>_path, :class => 'text_button_padding link_button'

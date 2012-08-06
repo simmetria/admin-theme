@@ -4,7 +4,7 @@ require File.expand_path('../lib/admin-theme/version', __FILE__)
 Gem::Specification.new do |gem|
   gem.authors       = ["Nihad Abbasov"]
   gem.email         = ["mail@narkoz.me"]
-  gem.description   = %q{Allows to generate admin panels quickly}
+  gem.description   = %q{Generate admin panels without pain}
   gem.summary       = %q{Admin panel generator}
   gem.homepage      = "https://github.com/simmetria/admin-theme"
 
